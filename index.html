@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LevelUpLitRPG | System Initializing</title>
+    <meta name="description" content="The definitive catalog for LitRPG, GameLit, and Progression Fantasy.">
+    <style>
+        :root {
+            --neon-blue: #00f3ff;
+            --dark-bg: #050a10;
+            --glass-bg: rgba(0, 20, 40, 0.85);
+            --border-color: #1a3c5a;
+        }
+        
+        body {
+            background-color: var(--dark-bg);
+            /* Optional: Add a subtle grid background if you have one */
+            background-image: linear-gradient(rgba(0, 243, 255, 0.03) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(0, 243, 255, 0.03) 1px, transparent 1px);
+            background-size: 30px 30px;
+            color: #e0e0e0;
+            font-family: 'Courier New', Courier, monospace;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        .system-window {
+            border: 2px solid var(--neon-blue);
+            background-color: var(--glass-bg);
+            box-shadow: 0 0 20px rgba(0, 243, 255, 0.2);
+            width: 90%;
+            max-width: 500px;
+            padding: 0;
+            border-radius: 4px;
+            position: relative;
+        }
+
+        .window-header {
+            background: rgba(0, 243, 255, 0.1);
+            padding: 10px 20px;
+            border-bottom: 1px solid var(--neon-blue);
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+            color: var(--neon-blue);
+        }
+
+        .window-content {
+            padding: 30px;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            text-shadow: 0 0 5px var(--neon-blue);
+        }
+
+        .typing-effect {
+            min-height: 1.2em;
+            color: var(--neon-blue);
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+
+        .stats-box {
+            text-align: left;
+            border: 1px solid var(--border-color);
+            background: rgba(0,0,0,0.3);
+            padding: 15px;
+            margin: 20px 0;
+            font-size: 0.9rem;
+        }
+
+        .stat-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 5px;
+        }
+
+        .input-group {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        input[type="email"] {
+            background: #000;
+            border: 1px solid var(--border-color);
+            color: white;
+            padding: 12px;
+            font-family: inherit;
+            outline: none;
+            transition: border 0.3s;
+        }
+
+        input[type="email"]:focus {
+            border-color: var(--neon-blue);
+        }
+
+        button {
+            background: var(--neon-blue);
+            color: #000;
+            border: none;
+            padding: 12px;
+            font-weight: bold;
+            font-family: inherit;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s;
+        }
+
+        button:hover {
+            background: white;
+            box-shadow: 0 0 15px var(--neon-blue);
+        }
+
+        .blink { animation: blinker 1s linear infinite; }
+        @keyframes blinker { 50% { opacity: 0; } }
+    </style>
+</head>
+<body>
+
+    <div class="system-window">
+        <div class="window-header">
+            <span>SYSTEM_ID: LUL-RPG</span>
+            <span>VER: 0.1.0</span>
+        </div>
+        
+        <div class="window-content">
+            <h1>New World Detected</h1>
+            <div class="typing-effect" id="typewriter"></div>
+
+            <div class="stats-box">
+                <div class="stat-row">
+                    <span>> Domain:</span>
+                    <span>LevelUpLitRPG.com</span>
+                </div>
+                <div class="stat-row">
+                    <span>> Status:</span>
+                    <span style="color: #ffcc00;">Integrating Database...</span>
+                </div>
+                <div class="stat-row">
+                    <span>> Quest:</span>
+                    <span>Gather Early Adopters</span>
+                </div>
+            </div>
+
+            <p style="font-size: 0.9rem; opacity: 0.8; margin-bottom: 20px;">
+                Sign up to reserve your F-Rank badge when the system goes online.
+            </p>
+
+            <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" class="input-group">
+                <input type="email" name="email" placeholder="Enter Player Email" required>
+                <button type="submit">[ ACCEPT QUEST ]</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Simple Typing Effect
+        const text = "Calibrating genre parameters...";
+        const speed = 50; 
+        let i = 0;
+        
+        function typeWriter() {
+            if (i < text.length) {
+                document.getElementById("typewriter").innerHTML += text.charAt(i);
+                i++;
+                setTimeout(typeWriter, speed);
+            } else {
+                document.getElementById("typewriter").innerHTML += '<span class="blink">_</span>';
+            }
+        }
+        
+        window.onload = typeWriter;
+    </script>
+</body>
+</html>
